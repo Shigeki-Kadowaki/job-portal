@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>公欠届フォーム</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        #body1 {
+            position: fixed;
+            left: 5%;
+            display: block;
+        }
+        #sendButton {
+            position: fixed;
+            left: 170px;
+            display: block;
+        }
+    </style>
+</head>
+<body id="body1">
+    <h1>&ensp;〇年〇組　山田太郎</h1>
+    <p>
+        &emsp;本人の住所<span class="badge rounded-pill bg-danger">必須</span><br>&emsp;<input type="text" ><br>
+        &emsp;電話(携帯)<span class="badge rounded-pill bg-danger">必須</span><br>&emsp;<input type="tel"><br>
+    </p>
+    <h2>
+        &ensp;公欠理由<span class="badge rounded-pill bg-danger">必須</span><br>
+        <input type="radio" name="num_of_inq" value="就活" onclick="formSwitch()" checked>就活
+		<input type="radio" name="num_of_inq" value="忌引" onclick="formSwitch()" >忌引
+		<input type="radio" name="num_of_inq" value="出席停止" onclick="formSwitch()" >出席停止
+        <input type="radio" name="num_of_inq" value="その他" onclick="formSwitch()" >その他
+    </h2>
+    <div id="activity">
+        <input type="radio" id="active" name="active" value="説明会">説明会
+        <input type="radio" id="active" name="active"value="試験">試験
+        <input type="radio" id="active" name="active"value="訪問">訪問
+        <input type="radio" id="active" name="active"value="免許取得">免許取得
+        <input type="radio" id="active" name="active"value="その他">その他
+    </div>
+    <div id="bereavement">
+        <p>亡くなった方<input type="text"></p>
+        <p>続柄<input type="text"></p>
+    </div>
+    <div id="attendance">
+        <p>停止理由(病名) <input type="text"></p>
+    </div>
+    <div id="other">
+        <p><font size="4">&ensp;理由</font></p>&emsp;
+        <input type="radio" name="other" value="交通遅延">交通遅延
+        <input type="radio" name="other"value="自然災害">自然災害
+        <input type="radio" name="other"value="高校訪問">高校訪問
+        <input type="radio" name="other"value="その他">その他
+    </div>
+    <div><br>&ensp;<font size="4">公欠日<span class="badge rounded-pill bg-danger">必須</span></font>
+        <input type="date" name="absenceDate" id="absenceDate">
+    </div>
+    <br>
+    <table id="table1">
+        <tr><th><font size="4">&emsp;公欠授業</font></th></tr>
+        <tr>
+            <th></th>
+            <th>科目名</th>
+            <th>担当教員</th>
+        </tr>
+        <tr>
+            
+            <th><input type="checkbox">&emsp;1時限</th>
+            <th>システム開発</th>
+            <th>三浦</th>
+        </tr>
+        <tr>
+            <th><input type="checkbox">&emsp;2時限</th>
+            <th>C言語</th>
+            <th>中西</th>
+        </tr>
+        <tr>
+            <th><input type="checkbox">&emsp;3時限</th>
+            <th>キャリアデザイン</th>
+            <th>飯山</th>
+        </tr>
+    </table>
+    <br>
+    <button id="sendButton">送信</button>
+
+    <script>
+        function formSwitch() {
+            hoge = document.getElementsByName('num_of_inq');
+            if (hoge[0].checked) {
+            document.getElementById("activity").style.display="";
+            document.getElementById("bereavement").style.display="none";
+            document.getElementById("attendance").style.display="none";
+            document.getElementById("other").style.display="none";
+            
+            } else if (hoge[1].checked) {
+                document.getElementById("activity").style.display="none";
+                document.getElementById("bereavement").style.display="";
+                document.getElementById("attendance").style.display="none"
+                document.getElementById("other").style.display="none";
+            } else if (hoge[2].checked) {
+                document.getElementById("activity").style.display="none";
+                document.getElementById("bereavement").style.display="none";
+                document.getElementById("attendance").style.display=""
+                document.getElementById("other").style.display="none";
+            } else if (hoge[3].checked) {
+                document.getElementById("activity").style.display="none";
+                document.getElementById("bereavement").style.display="none";
+                document.getElementById("attendance").style.display="none"
+                document.getElementById("other").style.display="";
+            }
+            
+        }
+        window.addEventListener('load', formSwitch());
+    </script>
+</body>
+</html>
